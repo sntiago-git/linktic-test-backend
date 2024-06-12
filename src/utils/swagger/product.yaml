@@ -1,0 +1,121 @@
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - sku
+        - name
+        - description
+        - price
+        - stock
+      properties:
+        sku:
+          type: string
+          description: Codigo unico del producto
+        name:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripción del producto
+        price:
+          type: number
+          description: Precio del producto
+        stock:
+          type: number
+          description: Stock del producto
+        imageUrl:
+          type: string
+          description: URL de la imagen del producto
+paths:
+  /api/products:
+    get:
+      tags:
+        - Productos
+      summary: Obtiene todos los productos
+      responses:
+        200:
+          description: Lista de productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+    post:
+      tags:
+        - Productos
+      summary: Crea un nuevo producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        201:
+          description: Producto creado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+  /api/products/{id}:
+    get:
+      tags:
+        - Productos
+      summary: Obtiene un producto por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: Producto no encontrado
+    put:
+      tags:
+        - Productos
+      summary: Actualiza un producto existente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        200:
+          description: Producto actualizado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: Producto no encontrado
+    delete:
+      tags:
+        - Productos
+      summary: Elimina un producto existente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Producto eliminado
+        404:
+          description: Producto no encontrado
