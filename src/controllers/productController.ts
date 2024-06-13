@@ -4,7 +4,7 @@ import Product, { IProduct } from '../models/Product';
 // Obtener todos los productos
 export const getProducts = async (req: Request, res: Response): Promise<void> => {
     try {
-        const products: IProduct[] = await Product.find();
+        const products: IProduct[] = await Product.find({ isDeleted: false });
         res.json(products);
     } catch (error: unknown) {
         if (error instanceof Error) {
@@ -16,7 +16,7 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
 // Obtener un producto por ID
 export const getProductById = async (req: Request, res: Response): Promise<void> => {
     try {
-        const product: IProduct | null = await Product.findById(req.params.id);
+        const product: IProduct | null = await Product.findById(req.params.id, { isDeleted: false });
         if (!product) {
             res.status(404).json({ message: 'Producto no encontrado' });
             return;
@@ -68,16 +68,17 @@ export const updateProduct = async (req: Request, res: Response): Promise<void> 
     }
 };
 
-// Eliminar un producto
+// Eliminar un producto suavemente
+
 export const deleteProduct = async (req: Request, res: Response): Promise<void> => {
     try {
-        const deletedProduct: IProduct | null = await Product.findByIdAndDelete(req.params.id);
-        if (!deletedProduct) {
+        const updatedProduct: IProduct | null = await Product.findByIdAndUpdate(req.params.id, { isDeleted: true }, { new: true });
+        if (!updatedProduct) {
             res.status(404).json({ message: 'Producto no encontrado' });
             return;
         }
         res.json({ message: 'Producto eliminado' });
-    } catch (error: unknown) {
+    } catch (error) {
         if (error instanceof Error) {
             res.status(500).json({ message: error.message });
         }
