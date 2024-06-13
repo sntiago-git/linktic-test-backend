@@ -31,7 +31,7 @@ Sigue estos pasos para clonar y configurar el proyecto localmente:
 
    ```bash
    git clone https://github.com/sntiago-git/linktic-test-backend.git
-   cd tu-repositorio
+   cd linktic-test-backend
 
 2. Instala las dependencias del proyecto:
 
