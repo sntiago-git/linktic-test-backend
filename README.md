@@ -9,6 +9,7 @@ Esta es una API construida con Node.js, Express y TypeScript que proporciona ges
 - Documentación de la API con Swagger.
 - Seguridad mejorada utilizando variables de entorno para datos sensibles.
 - Tipado estático con TypeScript.
+- Protección CORS
 
 ## Requisitos
 
@@ -44,6 +45,7 @@ Sigue estos pasos para clonar y configurar el proyecto localmente:
     PORT = tu_port
     NODE_APP_HOST = tu_mongo_host
     NODE_APP_DB = tu_mongo_name
+    FRONTEND_URL = tu_frontend_url
 
 5. Compila el proyecto TypeScript:
 
@@ -116,7 +118,7 @@ Una vez que el servidor esté en ejecución, puedes acceder a la documentación 
 |   │   │   └── product.yaml
 │   │   └── swagger.ts
 │   ├── app.ts
-│   └── server.ts
+│   └── index.ts
 ├── .env
 ├── .gitignore
 ├── nodemon.json
