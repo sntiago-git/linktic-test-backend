@@ -9,6 +9,7 @@ export interface IProduct extends Document {
     imageUrl: string;
     createdAt: Date;
     updatedAt: Date;
+    isDeleted: boolean;
 }
 
 const ProductSchema = new Schema({
@@ -42,6 +43,11 @@ const ProductSchema = new Schema({
         type: String,
         required: false
     },
+    isDeleted: {
+        type: Boolean,
+        default: false,
+        required: false
+    }, // Campo para borrado suave
 }, {
     timestamps: true  // createdAt y updatedAt
 });
