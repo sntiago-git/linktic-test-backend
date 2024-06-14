@@ -15,13 +15,24 @@ Se optó por MongoDB como base de datos NO-SQL para este proyecto por las siguie
 - Documentación de la API con Swagger.
 - Seguridad mejorada utilizando variables de entorno para datos sensibles.
 - Tipado estático con TypeScript.
-- Protección CORS
+- Protección CORS.
+- Despliegue usando Render.
 
 ## Requisitos
 
 - Node.js (v14 o superior)
 - npm (v6 o superior) o yarn
 - MongoDB (local o en la nube)
+
+## Despliegue
+Esta API está desplegada usando Render. Puedes acceder a la API en la siguiente URL:
+
+[https://linktic-test-backend.onrender.com/](https://linktic-test-backend.onrender.com/)
+
+## Documentación de la API
+La documentación de la API se ha generado con Swagger. Puedes acceder a ella en la siguiente URL:
+
+[https://linktic-test-backend.onrender.com/api-docs/](https://linktic-test-backend.onrender.com/api-docs/)
 
 ## Instalación
 
@@ -83,10 +94,6 @@ Sigue estos pasos para clonar y configurar el proyecto localmente:
 - npm run dev o yarn dev: Ejecuta el servidor en modo de desarrollo usando Nodemon.
 - npm start o yarn start: Ejecuta el servidor en modo de producción.
 
-## Uso
-
-Una vez que el servidor esté en ejecución, puedes acceder a la documentación de la API en http://localhost:3000/api-docs.
-
 ## Endpoints Principales
 
 ### Productos
@@ -128,9 +135,10 @@ Una vez que el servidor esté en ejecución, puedes acceder a la documentación 
 ├── .env
 ├── .gitignore
 ├── nodemon.json
+├── package-lock.json
 ├── package.json
-├── tsconfig.json
-└── README.md
+├── README.md 
+└── tsconfig.json
 ```
 
 ## Contribución
