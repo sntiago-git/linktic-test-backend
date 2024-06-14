@@ -2,8 +2,8 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import { Express } from 'express';
 
-// const swaggerDocumentProduct = YAML.load('./src/utils/swagger/product.yaml');
-// const swaggerDocumentOrder = YAML.load('./src/utils/swagger/order.yaml');
+const swaggerDocumentProduct = YAML.load('./src/utils/swagger/product.yaml');
+const swaggerDocumentOrder = YAML.load('./src/utils/swagger/order.yaml');
 
 export const setupSwagger = (app: Express): void => {
   const swaggerDocument = {
@@ -24,11 +24,13 @@ export const setupSwagger = (app: Express): void => {
       }
     },
     paths: {
-
+      ...swaggerDocumentProduct.paths,
+      ...swaggerDocumentOrder.paths,
     },
     components: {
       schemas: {
-
+        ...swaggerDocumentProduct.components.schemas,
+        ...swaggerDocumentOrder.components.schemas,
       },
     },
   };
