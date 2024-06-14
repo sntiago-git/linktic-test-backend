@@ -3,13 +3,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { NODE_APP_HOST, NODE_APP_DB } = process.env;
+const { NODE_APP_HOST, NODE_APP_DB, MONGO_URI } = process.env;
+let mongoURI: string = ""
 
 if (!NODE_APP_HOST || !NODE_APP_DB) {
     throw new Error('Database conexion error, some variables are missing');
 }
 
-const mongoURI = `mongodb://${NODE_APP_HOST}/${NODE_APP_DB}`; //Url de db
+if (MONGO_URI) {
+    mongoURI = MONGO_URI
+} else {
+    mongoURI = `mongodb://${NODE_APP_HOST}/${NODE_APP_DB}`; //Url de db local
+}
 
 const connectDB = async () => {
     try {
