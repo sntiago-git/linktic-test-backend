@@ -8,5 +8,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/utils/swagger/product.yaml",
+    "src/utils/swagger/order.yaml"
+  ]
 }
